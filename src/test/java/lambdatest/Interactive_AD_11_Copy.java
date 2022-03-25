@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -15,12 +16,13 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Interactive_AD_11 
+public class Interactive_AD_11_Copy 
 {
 	WebDriverWait wait;
 	WebDriver driver;
 	String parentWindow;
 	String actualURL;
+	Actions actions;
 	
 	@BeforeSuite
 	void setup()
@@ -31,29 +33,36 @@ public class Interactive_AD_11
 		driver.manage().window().maximize();
 		driver.get("https://api-dev.sourcesync.io/interactives/11/package?type=distribution");
 		wait = new WebDriverWait(driver,Duration.ofSeconds(50));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//img[@id='sd-interactive-banner']")));
 		parentWindow = driver.getWindowHandle();
+		actions = new Actions(driver);
 	}
 	
 	@Test
 	void playVideo() throws InterruptedException
 	{
 		//Click on Interactive container to play video
-		click("//img[@id='sd-interactive-banner']","//iframe");
+		click("//img[@id='sd-interactive-banner']");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("iframe")));
 		driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@data-instance-key='202_229cac43-9830-486a-aa14-1f30dbec3dff']/div")));
 		System.out.println("Video has been started.");
 	}
 	
-	@Test(priority=1 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(dependsOnMethods = {"playVideo"})
+	void pauseVideo() throws InterruptedException
+	{
+		actions.moveByOffset(50,50).click().perform();
+		Thread.sleep(5000);
+	}
+	
+	@Test(priority = 1 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo"} , enabled = true)
 	void openFirstSAM() throws InterruptedException
 	{
 		//Open First SAM
-		click("//div[@data-instance-key='202_229cac43-9830-486a-aa14-1f30dbec3dff']/div","//div[@class='smart-block-list__item q-mt-md']/button");
+		click("//div[@data-instance-key='202_229cac43-9830-486a-aa14-1f30dbec3dff']/div");
 		System.out.println("First SAM has been opened.");
 	}
 	
-	@Test(priority=2 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo","openFirstSAM"})
+	@Test(priority = 2 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo","openFirstSAM"} , enabled = true)
 	void verifyFirstSAMButton() throws InterruptedException
 	{
 		//Verify Button inside First SAM
@@ -61,23 +70,23 @@ public class Interactive_AD_11
 		System.out.println("Button inside First SAM working is proper : "+isPassed);
 	}
 	
-	@Test(priority=3 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo","openFirstSAM"})
+	@Test(priority = 3 , groups = {"FirstSAM"} , dependsOnMethods = {"playVideo","openFirstSAM"} , enabled = true)
 	void closeFirstSAM() throws InterruptedException
 	{
 		//Close First SAM
-		click("//i[contains(text(),'close')]","//div[@data-instance-key='201_1b21dd32-b6a4-44b1-a3b0-222c9170ae91']/div");
+		click("//i[contains(text(),'close')]");
 		System.out.println("First SAM has been closed.");
 	}
 	
-	@Test(priority=4 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 1 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo","closeFirstSAM"} , enabled = true)
 	void openSecondSAM() throws InterruptedException
 	{
 		//Open Second SAM
-		click("//div[@data-instance-key='201_1b21dd32-b6a4-44b1-a3b0-222c9170ae91']/div","//div[@class='smart-block-list__item q-mt-md']/button");
+		click("//div[@data-instance-key='201_1b21dd32-b6a4-44b1-a3b0-222c9170ae91']/div");
 		System.out.println("Second SAM has been opened.");
 	}
 	
-	@Test(priority=5 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 2 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo","openSecondSAM"} , enabled = true)
 	void verifySecondSAMButton() throws InterruptedException
 	{
 		//Verify Button inside Second SAM
@@ -85,23 +94,23 @@ public class Interactive_AD_11
 		System.out.println("Button inside Second SAM working is proper : "+isPassed1);
 	}
 	
-	@Test(priority=6 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 3 , groups = {"SecondSAM"} , dependsOnMethods = {"playVideo","openSecondSAM"} , enabled = true)
 	void closeSecondSAM() throws InterruptedException
 	{
 		//Close Second SAM
-		click("//i[contains(text(),'close')]","//div[@data-instance-key='197_0233552f-83c1-4206-987e-506ee484ddee']/div");
+		click("//i[contains(text(),'close')]");
 		System.out.println("Second SAM has been closed.");
 	}
 	
-	@Test(priority=7 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 1 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo","closeFirstSAM","closeSecondSAM"} , enabled = true)
 	void openThirdSAM() throws InterruptedException
 	{
 		//Open Third SAM
-		click("//div[@data-instance-key='197_0233552f-83c1-4206-987e-506ee484ddee']/div","//div[@class='smart-block-list__item q-mt-md']/button");
+		click("//div[@data-instance-key='197_0233552f-83c1-4206-987e-506ee484ddee']/div");
 		System.out.println("Third SAM has been opened.");
 	}
 	
-	@Test(priority=8 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 2 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo","openThirdSAM"} , enabled = true)
 	void verifyThirdSAMButton() throws InterruptedException
 	{
 		//Verify Button inside Third SAM
@@ -109,14 +118,13 @@ public class Interactive_AD_11
 		System.out.println("Button inside Third SAM working is proper : "+isPassed2);
 	}
 	
-	@Test(priority=9 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo"})
+	@Test(priority = 3 , groups = {"ThirdSAM"} , dependsOnMethods = {"playVideo","openThirdSAM"} , enabled = true)
 	void closeThirdSAM() throws InterruptedException
 	{
 		//Close Third SAM
-		click("//i[contains(text(),'close')]","//div[@data-instance-key='197_0233552f-83c1-4206-987e-506ee484ddee']/div");
+		click("//i[contains(text(),'close')]");
 		System.out.println("Third SAM has been closed.");
 	}
-	
 	
 	@AfterSuite
 	void end()
@@ -126,33 +134,34 @@ public class Interactive_AD_11
 	}
 	
 	//This method is used to click on any element and wait for another element
-	void click(String clickableXpath,String waitXpath) throws InterruptedException
+	void click(String waitAndClickableXpath) throws InterruptedException
 	{
-		driver.findElement(By.xpath(clickableXpath)).click();
 		Thread.sleep(10);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(waitXpath)));
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(waitAndClickableXpath)));
+		driver.findElement(By.xpath(waitAndClickableXpath)).click();
 	}
 		
-		//This verifyButton method verify that whether this button is redirecting to expected URL or not.
-		boolean verifyButton(String clickableXpath,String expectedURL) throws InterruptedException
+	//This verifyButton method verify that whether this button is redirecting to expected URL or not.
+	boolean verifyButton(String waitAndClickableXpath,String expectedURL) throws InterruptedException
+	{
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath(waitAndClickableXpath)));
+		driver.findElement(By.xpath(waitAndClickableXpath)).click();
+		List<String> allWindows = new ArrayList<String>(driver.getWindowHandles());
+		for(String childWindow : allWindows)
 		{
-			driver.findElement(By.xpath(clickableXpath)).click();
-			List<String> allWindows = new ArrayList<String>(driver.getWindowHandles());
-			for(String childWindow : allWindows)
+			if(!parentWindow.equals(childWindow))
 			{
-				if(!parentWindow.equals(childWindow))
-				{
-					driver.switchTo().window(childWindow);
-					actualURL = driver.getCurrentUrl();
-				}
+				driver.switchTo().window(childWindow);
+				actualURL = driver.getCurrentUrl();
 			}
-			driver.close();
-			driver.switchTo().window(parentWindow);
-			Thread.sleep(10);
-			driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
-			if(actualURL.equals(expectedURL))
-				return true;
-			else
-				return false;
+		}
+		driver.close();
+		driver.switchTo().window(parentWindow);
+		Thread.sleep(10);
+		driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+		if(actualURL.equals(expectedURL))
+			return true;
+		else
+			return false;
 		}
 }

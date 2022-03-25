@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="lambdatest.Interactive_AD_11">
+      <class name="lambdatest.Interactive_AD_11_LT_Copy">
         <methods>
+          <include name="setUp"/>
+          <include name="playVideo"/>
           <include name="run"/>
           <include name="end"/>
-          <include name="setup"/>
         </methods>
-      </class> <!-- lambdatest.Interactive_AD_11 -->
+      </class> <!-- lambdatest.Interactive_AD_11_LT_Copy -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
