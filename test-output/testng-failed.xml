@@ -3,14 +3,40 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="lambdatest.Interactive_AD_11_LT_Copy">
+      <class name="lambdatest.TestLT">
         <methods>
-          <include name="setUp"/>
+          <include name="image05"/>
+          <include name="markdown07"/>
+          <include name="markdown06"/>
+          <include name="markdown05"/>
+          <include name="markdown04"/>
+          <include name="markdown03"/>
+          <include name="markdown02"/>
+          <include name="markdown01"/>
+          <include name="video04"/>
+          <include name="video03"/>
+          <include name="video02"/>
+          <include name="video01"/>
+          <include name="iframe01"/>
+          <include name="social02"/>
+          <include name="iframe02"/>
+          <include name="action02"/>
+          <include name="action01"/>
+          <include name="social01"/>
+          <include name="image04"/>
           <include name="playVideo"/>
-          <include name="run"/>
-          <include name="end"/>
+          <include name="setup"/>
+          <include name="launchURL"/>
+          <include name="video06"/>
+          <include name="video05"/>
+          <include name="image02"/>
+          <include name="image03"/>
+          <include name="image01"/>
+          <include name="tearDown"/>
+          <include name="social03"/>
+          <include name="social04"/>
         </methods>
-      </class> <!-- lambdatest.Interactive_AD_11_LT_Copy -->
+      </class> <!-- lambdatest.TestLT -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

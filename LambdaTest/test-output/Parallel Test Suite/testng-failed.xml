@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="16" parallel="tests" name="Failed suite [Parallel Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Safari Test1(failed)">
+    <parameter name="browser" value="safari"/>
+    <parameter name="version" value="15.0"/>
+    <parameter name="platform" value="macOS Big Sur"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Safari Test1(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Safari Test2(failed)">
+    <parameter name="browser" value="safari"/>
+    <parameter name="version" value="14.0"/>
+    <parameter name="platform" value="macOS Catalina"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Safari Test2(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Safari Test3(failed)">
+    <parameter name="browser" value="safari"/>
+    <parameter name="version" value="13.0"/>
+    <parameter name="platform" value="macOS Catalina"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Safari Test3(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Chrome Test1(failed)">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="version" value="97.0"/>
+    <parameter name="platform" value="WIN10"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Chrome Test1(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Firefox Test2(failed)">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="version" value="96.0"/>
+    <parameter name="platform" value="WIN8.1"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Firefox Test2(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Edge Test2(failed)">
+    <parameter name="browser" value="MicrosoftEdge"/>
+    <parameter name="version" value="97.0"/>
+    <parameter name="platform" value="WIN8.1"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Edge Test2(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Opera Test2(failed)">
+    <parameter name="browser" value="opera"/>
+    <parameter name="version" value="82.0"/>
+    <parameter name="platform" value="WIN8.1"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Opera Test2(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Edge Test1(failed)">
+    <parameter name="browser" value="MicrosoftEdge"/>
+    <parameter name="version" value="97.0"/>
+    <parameter name="platform" value="WIN10"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Edge Test1(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Edge Test(failed)">
+    <parameter name="browser" value="MicrosoftEdge"/>
+    <parameter name="version" value="97.0"/>
+    <parameter name="platform" value="WIN11"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Edge Test(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Chrome Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="version" value="97.0"/>
+    <parameter name="platform" value="WIN11"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Chrome Test(failed) -->
+  <test thread-count="16" parallel="tests" name="TodaysHomeOwner_Firefox Test(failed)">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="version" value="96.0"/>
+    <parameter name="platform" value="WIN11"/>
+    <classes>
+      <class name="Test.TestNG_THO">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="action"/>
+        </methods>
+      </class> <!-- Test.TestNG_THO -->
+    </classes>
+  </test> <!-- TodaysHomeOwner_Firefox Test(failed) -->
+</suite> <!-- Failed suite [Parallel Test Suite] -->
