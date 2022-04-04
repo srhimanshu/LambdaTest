@@ -14,13 +14,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Interactive_AD_11_LT_Copy 
 {
 		RemoteWebDriver driver;
-		String userName = "me.himanshu.k";
-		String accessKey = "o0uXnFQ4vQ3BlctkJIjqFvWMaxxLuNAkCpMSPrc2OVWejUajGd";
+		String userName = "yash.jainsourcedigital";
+		String accessKey = "R8wSXoVE0MlpUPXrslGw0bZdothPDwvKsX1AVIfTMqISD5dFNX";
 		WebDriverWait wait;
 		String parentWindow;
 		String actualURL;
@@ -28,16 +29,16 @@ public class Interactive_AD_11_LT_Copy
 		Actions actions;
 		
 		@BeforeSuite
-		void setUp() throws MalformedURLException
+		@Parameters(value= {"browser","version","platform"})
+		void setUp(String browser, String version, String platform) throws MalformedURLException
 		{
 			//Set Capabilities for Lambda Test
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability("platform", "Windows 11");
-            capabilities.setCapability("browserName", "Chrome");
-            capabilities.setCapability("version", "99.0"); 
-            capabilities.setCapability("resolution", "1024x768");
-            capabilities.setCapability("build", "Test THO Himanshu");
-            capabilities.setCapability("name", "Partial Build");
+			capabilities.setCapability("platform", platform);
+            capabilities.setCapability("browserName", browser);
+            capabilities.setCapability("version", version); 
+            capabilities.setCapability("build", "Interactive_AD_11_Himanshu");
+            capabilities.setCapability("name", "Interactive_AD");
             capabilities.setCapability("network", true);
             capabilities.setCapability("visual", true);
             capabilities.setCapability("video", true); 
@@ -155,7 +156,7 @@ public class Interactive_AD_11_LT_Copy
 		}
 			
 		//This verifyButton method verify that whether this button is redirecting to expected URL or not.
-		boolean verifyButton(String waitAndClickableXpath,String expectedURL) 
+		boolean verifyButton(String waitAndClickableXpath,String expectedURL)
 		{
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(waitAndClickableXpath)));
 			driver.findElement(By.xpath(waitAndClickableXpath)).click();

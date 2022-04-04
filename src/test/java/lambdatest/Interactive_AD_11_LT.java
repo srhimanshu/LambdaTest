@@ -12,30 +12,29 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class Interactive_AD_11_LT 
 {
 		RemoteWebDriver driver;
-		String userName = "me.himanshu.k";
-		String accessKey = "o0uXnFQ4vQ3BlctkJIjqFvWMaxxLuNAkCpMSPrc2OVWejUajGd";
+		String userName = "yash.jainsourcedigital";  /*yash.jainsourcedigital*/
+		String accessKey = "R8wSXoVE0MlpUPXrslGw0bZdothPDwvKsX1AVIfTMqISD5dFNX"; /*R8wSXoVE0MlpUPXrslGw0bZdothPDwvKsX1AVIfTMqISD5dFNX*/
 		WebDriverWait wait;
 		String parentWindow;
 		String actualURL;
 		Actions actions;
 		
-		@BeforeSuite
+		@BeforeTest
+//		@Parameters(value= {"version","platform","device"})
 		void setUp() throws MalformedURLException
 		{
 			//Set Capabilities for Lambda Test
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability("platform", "Windows 11");
-            capabilities.setCapability("browserName", "Chrome");
-            capabilities.setCapability("version", "99.0"); 
-            capabilities.setCapability("resolution", "1024x768");
-            capabilities.setCapability("build", "Test THO Himanshu");
+            capabilities.setCapability("build", "Interactive_AD_11_Himanshu");
             capabilities.setCapability("name", "Partial Build");
             capabilities.setCapability("network", true);
             capabilities.setCapability("visual", true);
@@ -63,52 +62,41 @@ public class Interactive_AD_11_LT
 			click("//img[@id='sd-interactive-banner']");
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//iframe")));
 			driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
-			System.out.println("Video has been started.");
 			
 			//To Pause the video because currently video pause issue is available
 			actions.moveByOffset(50,50).click().perform();
 			
 			//Open First SAM
 			click("//div[@data-instance-key='202_229cac43-9830-486a-aa14-1f30dbec3dff']/div");
-			System.out.println("First SAM has been opened.");
 			
 			//Verify Button inside First SAM
-			boolean isPassed = verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/cats/soft-chews-for-cats.html?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
-			System.out.println("Button inside First SAM working is proper : "+isPassed);
+			verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/cats/soft-chews-for-cats.html?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
 			
 			//Close First SAM
 			click("//i[contains(text(),'close')]");
-			System.out.println("First SAM has been closed.");
 			
 			//Open Second SAM
 			click("//div[@data-instance-key='201_1b21dd32-b6a4-44b1-a3b0-222c9170ae91']/div");
-			System.out.println("Second SAM has been opened.");
 			
 			//Verify Button inside Second SAM
-			boolean isPassed1 = verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/cats/oil-tinctures-for-cats.html?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
-			System.out.println("Button inside Second SAM working is proper : "+isPassed1);
+			verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/cats/oil-tinctures-for-cats.html?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
 			
 			//Close Second SAM
 			click("//i[contains(text(),'close')]");
-			System.out.println("Second SAM has been closed.");
 			
 			//Open Third SAM
 			click("//div[@data-instance-key='197_0233552f-83c1-4206-987e-506ee484ddee']/div");
-			System.out.println("Third SAM has been opened.");
 			
 			//Verify Button inside Third SAM
-			boolean isPassed2 = verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/all-products?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
-			System.out.println("Button inside Third SAM working is proper : "+isPassed2);
+			verifyButton("//div[@class='smart-block-list__item q-mt-md']/button","https://www.pawcbd.com/all-products?utm_source=sourcedigital&utm_medium=video&utm_campaign=tripadvisor");
 			
 			//Close Third SAM
 			click("//i[contains(text(),'close')]");
-			System.out.println("Third SAM has been closed.");
 		}
 		
-		@AfterSuite
+		@AfterClass
 		void end()
 		{
-			System.out.println("With All Passed Test Cases this interactive ad has been tested.");
 			driver.quit();
 		}
 		
